@@ -20,28 +20,11 @@ public class ProductRepository {
                 new Product(5L, "Творог", 125)
         ));
     }
-
     public Product getProductById(Long id){
         return products.stream().filter(i -> i.getId()== id).findFirst().get();
     }
-
     public List<Product> getProductAll() {
         return products;
     }
 
-    public void addProduct(String title, int price){
-        Long newId = products.stream().mapToLong(Product::getId).max().getAsLong() + 1;
-        Product product = new Product(newId, title, price);
-        products.add(product);
-    }
-
-    public void removeProduct(Long id){
-        for (int i=0; i< products.size(); i++){
-            if (products.get(i).getId() == id){
-                products.remove(i);
-                break;
-            }
-        }
-    }
 }
-
